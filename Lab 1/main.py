@@ -62,19 +62,30 @@ test_cases = [(random.randint(1, 9999), random.randint(1, 9999))
               for _ in range(10)]
 timings = [[], [], []]
 
+print("Test cases:")
+for pair in test_cases:
+    print(f"{pair} \t GCD: {euclidean_gcd(pair[0], pair[1])}")
+
 # Calculate and print average running times for each GCD algorithm
 print("Average running times:")
 for a, b in test_cases:
     euclidean_time = timeit.timeit(lambda: euclidean_gcd(a, b), number=10000)
     timings[0].append(euclidean_time)
-print(f"Euclidean \t {mean(timings[0]):.5f}")
+print(f"Euclidean \t {mean(timings[0]):.5f}s")
 
 for a, b in test_cases:
     binary_time = timeit.timeit(lambda: binary_gcd(a, b), number=10000)
     timings[1].append(binary_time)
-print(f"Binary \t\t {mean(timings[1]):.5f}")
+print(f"Binary \t\t {mean(timings[1]):.5f}s")
 
 for a, b in test_cases:
     brute_time = timeit.timeit(lambda: brute_force_gcd(a, b), number=10000)
     timings[2].append(brute_time)
-print(f"Brute Force \t {mean(timings[2]):.5f}")
+print(f"Brute Force \t {mean(timings[2]):.5f}s")
+
+
+print(euclidean_gcd(0, 5))
+print(binary_gcd(0, 5))
+print(brute_force_gcd(0, 5))
+
+# Problem 4 for next lab
